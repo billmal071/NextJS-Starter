@@ -6,7 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "cypress": "cypress open",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch",
+    "configure-husky": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\""
   },
   "dependencies": {
     "next": "12.1.4",
@@ -14,11 +19,28 @@
     "react-dom": "18.0.0"
   },
   "devDependencies": {
+    "@testing-library/cypress": "^8.0.2",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.0.0",
+    "@testing-library/user-event": "^14.1.0",
     "@types/node": "17.0.23",
     "@types/react": "18.0.1",
     "@types/react-dom": "18.0.0",
+    "cypress": "^9.5.3",
     "eslint": "8.13.0",
     "eslint-config-next": "12.1.4",
+    "jest": "^27.5.1",
     "typescript": "4.6.3"
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx}": [
+      "yarn lint"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "git pull upstream main"
+    }
   }
 }
