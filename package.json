@@ -33,14 +33,13 @@
     "typescript": "4.6.3"
   },
   "lint-staged": {
-    "**/*.{ts,tsx}": [
-      "yarn lint"
+    "*.{ts,tsx}": [
+      "yarn test"
     ]
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "git pull upstream main"
+      "pre-commit": "lint-staged"
     }
   }
 }
